@@ -9,11 +9,14 @@ var counterKills = document.getElementById("counter");
 var amountKilled = 0;
 var character = document.getElementById("character");
 var sword = document.getElementById("sword");
+
+
 sword.classList.toggle('rotated');
 character.style.position = "relative";
 character.style.zIndex = 3;
 
 function moveLeft () {
+
   character.style.left = character.style.left || "0px";
   character.style.left = parseInt(character.style.left) - 10 + "px";
   sword.style.left = parseInt(character.style.left) + 190 + "px";
@@ -55,7 +58,6 @@ function moveSelection (evt) {
       // had to apply knock back to right arrow key because it wasnt working when the character went to enemy
       for (var i = 0; i < getEnemy.length; i++) {
         if (parseInt(getEnemy[i].style.left) <= parseInt(window.getComputedStyle(sword).getPropertyValue("left"))) {
-          alert(" AYyyyyyyy its me, you touched");
           userCharacter.health = userCharacter.health - 10;
           PDisplayCharacterName.innerHTML = userCharacter.name + " hp: " + userCharacter.health;
           console.log(userCharacter.health);
@@ -64,7 +66,6 @@ function moveSelection (evt) {
           PDisplayCharacterName.style.left = parseInt(PDisplayCharacterName.style.left) - 20 + "px";
           if (userCharacter.health === 0) {
             document.write(" you lost press refresh to load game again :)");
-            alert("you died");
           }
         }
         }
@@ -110,7 +111,6 @@ function moveSelection (evt) {
       var enemyOriginalLeft = window.getComputedStyle(getEnemy[i]).getPropertyValue("left");
       console.log(getEnemy[i] + " this is the enemy that is in the loop");
       if (parseInt(enemyOriginalLeft) <= parseInt(window.getComputedStyle(sword).getPropertyValue("left")) + parseInt(window.getComputedStyle(sword).getPropertyValue("width")) && parseInt(enemyOriginalLeft) > parseInt(window.getComputedStyle(sword).getPropertyValue("left"))) {
-       alert(" yo it worked when the enemy was at: in the else iF this is enemy left: " + getEnemy[i].style.left + " this is the placement of the character at: " +  window.getComputedStyle(sword).getPropertyValue("left"));
 
        getPtags[i].style.left = parseInt(getPtags[i].style.left) + 20 + "px";
        enemyOriginalLeft = parseInt(enemyOriginalLeft) + 20 + "px";
@@ -120,7 +120,6 @@ function moveSelection (evt) {
      if (enemyRandomSpawn[i].health === 0) {
        var getEnemyDisplay = document.getElementsByClassName("layoutEnemy");
        getEnemyDisplay[i].parentNode.removeChild(getEnemyDisplay[i]);
-       alert(enemyRandomSpawn.splice(i, 1) + " this is on the one that is being removed");
       enemyRandomSpawn.splice(i, 1);
 
       getPtags[i].parentNode.removeChild(getPtags[i]);

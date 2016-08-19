@@ -1,5 +1,3 @@
-// this sword is from the other file
-
 
 var userCharacter = {
   health: 100,
